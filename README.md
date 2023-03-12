@@ -34,6 +34,15 @@ The service should allow to:
 - :arrows_counterclockwise: gRPC + gateway for REST API
 - :whale: dockerized + docker-composed
 
+## HOWTO
+
+- Run in docker-compose with `make dc`. This will start `logapi` and `immudb` containers, create `users` and `loglines` tables and a test user `test` with password `test`.
+- Run Postman collection from `./postman` to test the API.
+
+## TODO
+- unit tests
+- testing tool
+
 ## A picture is worth a thousand words
 
 <img src="./images/make-run.png">

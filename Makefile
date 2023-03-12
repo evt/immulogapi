@@ -1,5 +1,5 @@
 dc:
-	docker compose --verbose up --build --remove-orphans
+	docker compose up --build --remove-orphans
 
 run:
 	GRPC_HOST=0.0.0.0 \
