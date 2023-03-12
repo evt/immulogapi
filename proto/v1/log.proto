@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+package v1;
+
+option go_package = "proto/v1";
+
+import "google/protobuf/empty.proto";
+import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+service LogService {
+  rpc CreateLogLine (CreateLogLineRequest) returns (CreateLogLineResponse) {
+    option (google.api.http) = {
+      post: "/v1/log"
+      body: "*"
+    };
+  }
+  rpc CreateLogLines (CreateLogLinesRequest) returns (CreateLogLinesResponse) {
+    option (google.api.http) = {
+      post: "/v1/logs"
+      body: "*"
+    };
+  }
+  rpc GetLogLineTotal (google.protobuf.Empty) returns (GetLogLineTotalResponse) {
+    option (google.api.http) = {
+      get: "/v1/logs/total"
+    };
+  }
+  rpc GetLogLinesHistory (GetLogLinesHistoryRequest) returns (GetLogLinesHistoryResponse) {
+    option (google.api.http) = {
+      get: "/v1/logs"
+    };
+  }
+}
+
+message CreateLogLineRequest {
+  string text = 1;
+  string source = 2;
+  google.protobuf.Timestamp created_at = 3;
+}
+
+message CreateLogLineResponse {
+  uint64 id = 1;
+}
+
+message CreateLogLinesRequest {
+  repeated CreateLogLineRequest lines = 1;
+}
+
+message CreateLogLinesResponse {
+  repeated uint64 id = 1;
+}
+
+message GetLogLineTotalResponse {
+  uint64 total = 1;
+}
+
+message GetLogLinesHistoryRequest {
+  string source = 1;
+  int32 limit = 2;
+}
+
+message LogLineHistoryRec {
+  uint64 id = 1;
+  string source = 2;
+  string text = 3;
+}
+
+message GetLogLinesHistoryResponse {
+  repeated LogLineHistoryRec lines = 1;
+}

@@ -1,0 +1,39 @@
+version: '3.9'
+
+services:
+  immudb:
+    image: "codenotary/immudb:latest"
+    platform: "linux/amd64"
+    container_name: immudb
+    ports:
+      - "3322:3322"
+      - "9497:9497"
+    volumes:
+      - ./data/immudb:/var/lib/immudb
+    healthcheck:
+      test: ["CMD", "/usr/local/bin/immuadmin status"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 5s
+
+  logapi:
+    container_name: logapi
+    depends_on:
+      - immudb
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+     - "9090:9090"
+    environment:
+      GRPC_PORT: 9000
+      HTTP_PORT: 9090
+      IMMUDB_HOST: immudb
+      IMMUDB_PORT: 3322
+      IMMUDB_DATABASE: defaultdb
+      IMMUDB_USERNAME: immudb
+      IMMUDB_PASSWORD: immudb
+    command: ./logapi
+
+

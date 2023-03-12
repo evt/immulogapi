@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package v1;
+
+option go_package = "proto/v1";
+
+import "google/api/annotations.proto";
+
+service AuthService {
+  rpc Auth (AuthRequest) returns (AuthResponse) {
+    option (google.api.http) = {
+      post: "/v1/auth"
+      body: "*"
+    };
+  };
+  rpc CreateUser (CreateUserRequest) returns (CreateUserResponse) {
+    option (google.api.http) = {
+      post: "/v1/user"
+      body: "*"
+    };
+  }
+}
+
+message AuthRequest {
+  string login = 1;
+  string pass = 2;
+}
+
+message AuthResponse {
+  string token = 1;
+}
+
+message CreateUserRequest {
+  string login = 1;
+  string pass = 2;
+}
+
+message CreateUserResponse {
+  int64 id = 1;
+}
