@@ -37,7 +37,9 @@ The service should allow to:
 ## HOWTO
 
 - Run in docker-compose with `make dc`. This will start `logapi` and `immudb` containers, create `users` and `loglines` tables and a test user `test` with password `test`.
+  <img src="./images/make_dc.gif">
 - Run Postman collection from `./postman` to test the API.
+  <img src="./images/postman.gif">
 
 ## TODO
 - unit tests
@@ -45,4 +47,4 @@ The service should allow to:
 
 ## A picture is worth a thousand words
 
-<img src="./images/make-run.png">
+
