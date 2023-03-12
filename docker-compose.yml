@@ -27,7 +27,9 @@ services:
     ports:
      - "9090:9090"
     environment:
+      GRPC_HOST: 0.0.0.0
       GRPC_PORT: 9000
+      HTTP_HOST: 0.0.0.0
       HTTP_PORT: 9090
       IMMUDB_HOST: immudb
       IMMUDB_PORT: 3322

@@ -1,0 +1,220 @@
+{
+	"info": {
+		"_postman_id": "aff38e19-2ee1-41e6-a7a8-ad88d354103f",
+		"name": "Immudb log API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3049972"
+	},
+	"item": [
+		{
+			"name": "JWT-based authentication",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"token\", jsonData.token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"login\": \"test\",\n    \"pass\": \"test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9090/v1/auth",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"v1",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Store single log line",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"text\": \"single log line\",\n    \"source\": \"some source\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9090/v1/log",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"v1",
+						"log"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Store batch of log lines",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"lines\": [\n        {\"text\": \"log line 1\", \"source\": \"source 1\"},\n        {\"text\": \"log line 2\", \"source\": \"source 2\"},\n        {\"text\": \"log line 3\", \"source\": \"source 3\"},\n        {\"text\": \"log line 4\", \"source\": \"source 4\"},\n        {\"text\": \"log line 5\", \"source\": \"source 5\"}\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9090/v1/logs",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"v1",
+						"logs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Print number of stored logs",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9090/v1/logs/total",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"v1",
+						"logs",
+						"total"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Print history of stored logs",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9090/v1/logs",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"v1",
+						"logs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Print history of stored logs (last 3)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9090/v1/logs?limit=3",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"v1",
+						"logs"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

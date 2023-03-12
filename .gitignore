@@ -5,6 +5,9 @@
 *.so
 *.dylib
 
+# Immudb data directory
+data/immudb
+
 # Test binary, built with `go test -c`
 *.test
 
