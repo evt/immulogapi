@@ -7,7 +7,6 @@
 ![License](https://img.shields.io/github/license/evt/immulogapi)
 ![GitHub last commit](https://img.shields.io/github/last-commit/evt/immulogapi)
 ![GitHub contributors](https://img.shields.io/github/contributors/evt/immulogapi)
-![Simply the best ;)](https://img.shields.io/badge/simply-the%20best%20%3B%29-orange)
 
 <img align="right" width="50%" src="./images/big-gopher.jpg">
 
