@@ -45,6 +45,4 @@ The service should allow to:
 - unit tests
 - testing tool
 
-## A picture is worth a thousand words
-
 
