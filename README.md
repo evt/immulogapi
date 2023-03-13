@@ -1,6 +1,5 @@
 ![Go Report](https://goreportcard.com/badge/github.com/evt/immulogapi)
 ![Repository Top Language](https://img.shields.io/github/languages/top/evt/immulogapi)
-![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/quality/g/evt/immulogapi/main)
 ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/evt/immulogapi)
 ![Github Repository Size](https://img.shields.io/github/repo-size/evt/immulogapi)
 ![Github Open Issues](https://img.shields.io/github/issues/evt/immulogapi)
