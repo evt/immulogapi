@@ -77,7 +77,7 @@ func prepareHistorySQLQuery(source string, limit int) (string, []any) {
 	}
 	query += " order by id desc"
 	if limit > 0 {
-		query += " LIMIT ?"
+		query += " OFFSET 0 LIMIT ?"
 		args = append(args, limit)
 	}
 
