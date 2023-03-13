@@ -24,7 +24,7 @@ func NewManager(key string) *Manager {
 }
 
 func (m *Manager) Sign(claims *CustomClaims) (string, error) {
-	claims.ID = fmt.Sprintf("%s-%d", claims.UserID, time.Now().UnixNano())
+	claims.ID = fmt.Sprintf("%d-%d", claims.UserID, time.Now().UnixNano())
 	claims.IssuedAt = jwt.NewNumericDate(time.Now().UTC())
 	claims.ExpiresAt = jwt.NewNumericDate(time.Now().UTC().Add(time.Hour * 12))
 
