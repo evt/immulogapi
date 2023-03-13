@@ -33,6 +33,7 @@ The service should allow to:
 - :book: standard Go project layout (well, more or less :blush:)
 - :arrows_counterclockwise: gRPC + gateway for REST API
 - :whale: dockerized + docker-composed
+- :elephant: ImmuDB in a standard SQL mode used (easy to replace with any other SQL DB)
 
 ## HOWTO
 
